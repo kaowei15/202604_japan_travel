@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 京阪神和歌山 9天8夜探險之旅</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .itinerary-step::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 30px;
+            height: calc(100% - 20px);
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        .itinerary-step:last-child::before {
+            display: none;
+        }
+        .checked-item {
+            text-decoration: line-through;
+            color: #94a3b8;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-btn.active {
+            background-color: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+        .map-link {
+            color: #1d4ed8;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .map-link:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+        .hotel-card {
+            background: linear-gradient(to right, #f8fafc, #ffffff);
+            border-left: 4px solid #6366f1;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-indigo-700 text-white py-10 px-4 text-center shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">🇯🇵 京阪神和歌山大縱走</h1>
+        <p class="text-indigo-100 text-lg italic">9 天 8 夜 城市探險計畫</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-4 md:p-8 space-y-6">
+        
+        <!-- 快速概覽 -->
+        <section class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex justify-around items-center text-center">
+            <div>
+                <p class="text-xs text-slate-500 mb-1">主要城市</p>
+                <p class="font-bold text-blue-600">神/大/和</p>
+            </div>
+            <div class="h-8 w-px bg-slate-200"></div>
+            <div>
+                <p class="text-xs text-slate-500 mb-1">總天數</p>
+                <p class="font-bold text-blue-600">9 Days</p>
+            </div>
+            <div class="h-8 w-px bg-slate-200"></div>
+            <div>
+                <p class="text-xs text-slate-500 mb-1">交通卡</p>
+                <p class="font-bold text-blue-600">ICOCA</p>
+            </div>
+        </section>
+
+        <!-- 日期分頁標籤 -->
+        <section class="sticky top-2 z-30">
+            <div class="flex overflow-x-auto no-scrollbar py-2 gap-2 bg-slate-50/80 backdrop-blur-md rounded-xl p-1 shadow-sm">
+                <script>
+                    for (let i = 1; i <= 9; i++) {
+                        document.write(`<button onclick="showTab(${i})" id="btn-${i}" class="tab-btn ${i === 1 ? 'active' : ''} shrink-0 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm">Day ${i}</button>`);
+                    }
+                </script>
+            </div>
+        </section>
+
+        <!-- 行程詳細內容 -->
+        <section id="itinerary-container" class="bg-white rounded-2xl shadow-sm p-6 border border-slate-100 min-h-[400px]">
+            
+            <!-- Day 1 -->
+            <div id="tab-1" class="tab-content active">
+                <h3 class="text-xl font-bold text-blue-600 mb-6 flex items-center">
+                    <i class="fas fa-ship mr-2"></i> Day 1 | 跨海抵達神戶
+                </h3>
+                <div class="relative ml-2 mb-8">
+                    <div class="itinerary-step relative pl-12 pb-8">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <p class="text-sm text-slate-500 font-medium">12:00</p>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/KIX+關西國際機場" target="_blank" class="map-link">KIX 關西機場抵達 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">搭乘神戶高速船直達神戶。外國遊客優惠僅 500 日圓。</p>
+                    </div>
+                    <div class="itinerary-step relative pl-12">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/神戶港塔" target="_blank" class="map-link">神戶港塔 / UMIE <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">體驗神戶港經典風景與晚餐。</p>
+                    </div>
+                </div>
+                <!-- 住宿區塊 -->
+                <div class="hotel-card p-4 rounded-xl border border-slate-100">
+                    <h5 class="text-sm font-bold text-indigo-600 mb-2 italic"><i class="fas fa-bed mr-2"></i>今晚住宿 (神戶)</h5>
+                    <p class="font-bold text-slate-800">待定飯店名稱</p>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fas fa-location-dot mr-1"></i> 飯店地址尚未填入</p>
+                    <a href="#" class="mt-2 text-xs text-blue-500 flex items-center"><i class="fas fa-directions mr-1"></i> 開啟地圖導航</a>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div id="tab-2" class="tab-content">
+                <h3 class="text-xl font-bold text-blue-600 mb-6 flex items-center">
+                    <i class="fas fa-castle mr-2"></i> Day 2 | 姬路國寶文化之旅
+                </h3>
+                <div class="relative ml-2 mb-8">
+                    <div class="itinerary-step relative pl-12 pb-8">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/姬路城" target="_blank" class="map-link">姬路城 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a> & <a href="https://www.google.com/maps/search/好古園" target="_blank" class="map-link">好古園 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">參觀日本國寶級建築與美麗的日式庭園。</p>
+                    </div>
+                    <div class="itinerary-step relative pl-12">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/姬路本町商店街" target="_blank" class="map-link">本町商店街 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">在熱鬧的商店街逛街購買紀念品。</p>
+                    </div>
+                </div>
+                <div class="hotel-card p-4 rounded-xl border border-slate-100">
+                    <h5 class="text-sm font-bold text-indigo-600 mb-2 italic"><i class="fas fa-bed mr-2"></i>今晚住宿 (神戶)</h5>
+                    <p class="font-bold text-slate-800">待定飯店名稱</p>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fas fa-location-dot mr-1"></i> 飯店地址尚未填入</p>
+                    <a href="#" class="mt-2 text-xs text-blue-500 flex items-center"><i class="fas fa-directions mr-1"></i> 開啟地圖導航</a>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div id="tab-3" class="tab-content">
+                <h3 class="text-xl font-bold text-blue-600 mb-6 flex items-center">
+                    <i class="fas fa-camera-retro mr-2"></i> Day 3 | 神戶優雅氛圍
+                </h3>
+                <div class="relative ml-2 mb-8">
+                    <div class="itinerary-step relative pl-12 pb-8">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/北野異人館街" target="_blank" class="map-link">北野異人館 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">感受充滿洋風氣息的古老別墅建築群。</p>
+                    </div>
+                    <div class="itinerary-step relative pl-12">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/神戶三宮" target="_blank" class="map-link">三宮商圈 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">神戶的核心購物區，百貨與精品店林立。</p>
+                    </div>
+                </div>
+                <div class="hotel-card p-4 rounded-xl border border-slate-100">
+                    <h5 class="text-sm font-bold text-indigo-600 mb-2 italic"><i class="fas fa-bed mr-2"></i>今晚住宿 (神戶)</h5>
+                    <p class="font-bold text-slate-800">待定飯店名稱</p>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fas fa-location-dot mr-1"></i> 飯店地址尚未填入</p>
+                    <a href="#" class="mt-2 text-xs text-blue-500 flex items-center"><i class="fas fa-directions mr-1"></i> 開啟地圖導航</a>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div id="tab-4" class="tab-content">
+                <h3 class="text-xl font-bold text-red-600 mb-6 flex items-center">
+                    <i class="fas fa-exchange-alt mr-2"></i> Day 4 | 前往大阪
+                </h3>
+                <div class="relative ml-2 mb-8">
+                    <div class="itinerary-step relative pl-12 pb-8">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/大阪黑門市場" target="_blank" class="map-link">黑門市場 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">品嚐和牛、生魚片與當季水果。</p>
+                    </div>
+                    <div class="itinerary-step relative pl-12">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/道頓堀" target="_blank" class="map-link">道頓堀 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a> & <a href="https://www.google.com/maps/search/心齋橋筋商店街" target="_blank" class="map-link">心齋橋 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">大阪最具代表性的商圈，跑跑人地標所在地。</p>
+                    </div>
+                </div>
+                <div class="hotel-card p-4 rounded-xl border border-slate-100">
+                    <h5 class="text-sm font-bold text-red-600 mb-2 italic"><i class="fas fa-bed mr-2"></i>今晚住宿 (大阪)</h5>
+                    <p class="font-bold text-slate-800">待定飯店名稱</p>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fas fa-location-dot mr-1"></i> 飯店地址尚未填入</p>
+                    <a href="#" class="mt-2 text-xs text-blue-500 flex items-center"><i class="fas fa-directions mr-1"></i> 開啟地圖導航</a>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div id="tab-5" class="tab-content">
+                <h3 class="text-xl font-bold text-red-600 mb-6 flex items-center">
+                    <i class="fas fa-gamepad mr-2"></i> Day 5 | 下町與動漫天堂
+                </h3>
+                <div class="relative ml-2 mb-8">
+                    <div class="itinerary-step relative pl-12 pb-8">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/木津卸賣市場" target="_blank" class="map-link">木津市場 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">比黑門更在地的批發市場。</p>
+                    </div>
+                    <div class="itinerary-step relative pl-12">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/大阪日本橋" target="_blank" class="map-link">日本橋 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a> & <a href="https://www.google.com/maps/search/通天閣" target="_blank" class="map-link">通天閣 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">新世界氛圍，搭配串炸晚餐。</p>
+                    </div>
+                </div>
+                <div class="hotel-card p-4 rounded-xl border border-slate-100">
+                    <h5 class="text-sm font-bold text-red-600 mb-2 italic"><i class="fas fa-bed mr-2"></i>今晚住宿 (大阪)</h5>
+                    <p class="font-bold text-slate-800">待定飯店名稱</p>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fas fa-location-dot mr-1"></i> 飯店地址尚未填入</p>
+                    <a href="#" class="mt-2 text-xs text-blue-500 flex items-center"><i class="fas fa-directions mr-1"></i> 開啟地圖導航</a>
+                </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div id="tab-6" class="tab-content">
+                <h3 class="text-xl font-bold text-red-600 mb-6 flex items-center">
+                    <i class="fas fa-landmark mr-2"></i> Day 6 | 大阪地標之旅
+                </h3>
+                <div class="relative ml-2 mb-8">
+                    <div class="itinerary-step relative pl-12 pb-8">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/大阪城天守閣" target="_blank" class="map-link">大阪城 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">大阪的歷史象徵。</p>
+                    </div>
+                    <div class="itinerary-step relative pl-12">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/天神橋筋商店街" target="_blank" class="map-link">天神橋筋商店街 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">逛全日最長商店街與梅田區。</p>
+                    </div>
+                </div>
+                <div class="hotel-card p-4 rounded-xl border border-slate-100">
+                    <h5 class="text-sm font-bold text-red-600 mb-2 italic"><i class="fas fa-bed mr-2"></i>今晚住宿 (大阪)</h5>
+                    <p class="font-bold text-slate-800">待定飯店名稱</p>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fas fa-location-dot mr-1"></i> 飯店地址尚未填入</p>
+                    <a href="#" class="mt-2 text-xs text-blue-500 flex items-center"><i class="fas fa-directions mr-1"></i> 開啟地圖導航</a>
+                </div>
+            </div>
+
+            <!-- Day 7 -->
+            <div id="tab-7" class="tab-content">
+                <h3 class="text-xl font-bold text-emerald-600 mb-6 flex items-center">
+                    <i class="fas fa-train mr-2"></i> Day 7 | 前進和歌山
+                </h3>
+                <div class="relative ml-2 mb-8 border-l-2 border-dashed border-emerald-200">
+                    <div class="itinerary-step relative pl-12 pb-8">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <h4 class="text-lg font-bold">大阪最後補貨</h4>
+                        <p class="text-slate-600">利用早上時間買齊尚未入手的伴手禮。</p>
+                    </div>
+                    <div class="itinerary-step relative pl-12">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <h4 class="text-lg font-bold">前往和歌山</h4>
+                        <p class="text-slate-600">移動至和歌山站，辦理住宿。</p>
+                    </div>
+                </div>
+                <div class="hotel-card p-4 rounded-xl border border-slate-100">
+                    <h5 class="text-sm font-bold text-emerald-600 mb-2 italic"><i class="fas fa-bed mr-2"></i>今晚住宿 (和歌山)</h5>
+                    <p class="font-bold text-slate-800">待定飯店名稱</p>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fas fa-location-dot mr-1"></i> 飯店地址尚未填入</p>
+                    <a href="#" class="mt-2 text-xs text-blue-500 flex items-center"><i class="fas fa-directions mr-1"></i> 開啟地圖導航</a>
+                </div>
+            </div>
+
+            <!-- Day 8 -->
+            <div id="tab-8" class="tab-content">
+                <h3 class="text-xl font-bold text-emerald-600 mb-6 flex items-center">
+                    <i class="fas fa-fish mr-2"></i> Day 8 | 和歌山精華遊
+                </h3>
+                <div class="relative ml-2 mb-8">
+                    <div class="itinerary-step relative pl-12 pb-8">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/和歌山城" target="_blank" class="map-link">和歌山城 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">眺望紀川風景，參觀古城。 </p>
+                    </div>
+                    <div class="itinerary-step relative pl-12">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <h4 class="text-lg font-bold"><a href="https://www.google.com/maps/search/和歌山黑潮市場" target="_blank" class="map-link">黑潮市場 <i class="fas fa-map-marker-alt ml-1 text-xs"></i></a></h4>
+                        <p class="text-slate-600">必看鮪魚秀與海鮮 BBQ。</p>
+                    </div>
+                </div>
+                <div class="hotel-card p-4 rounded-xl border border-slate-100">
+                    <h5 class="text-sm font-bold text-emerald-600 mb-2 italic"><i class="fas fa-bed mr-2"></i>今晚住宿 (和歌山)</h5>
+                    <p class="font-bold text-slate-800">待定飯店名稱</p>
+                    <p class="text-xs text-slate-500 mt-1"><i class="fas fa-location-dot mr-1"></i> 飯店地址尚未填入</p>
+                    <a href="#" class="mt-2 text-xs text-blue-500 flex items-center"><i class="fas fa-directions mr-1"></i> 開啟地圖導航</a>
+                </div>
+            </div>
+
+            <!-- Day 9 -->
+            <div id="tab-9" class="tab-content">
+                <h3 class="text-xl font-bold text-slate-700 mb-6 flex items-center">
+                    <i class="fas fa-plane-departure mr-2"></i> Day 9 | 平安返家
+                </h3>
+                <div class="relative ml-2">
+                    <div class="itinerary-step relative pl-12 pb-8 text-slate-400">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-slate-300 text-white rounded-full flex items-center justify-center font-bold z-10">01</span>
+                        <p class="text-sm font-medium">09:30</p>
+                        <h4 class="text-lg font-bold">前往 KIX 機場</h4>
+                        <p>建議搭乘機場巴士直達機場航廈。</p>
+                    </div>
+                    <div class="itinerary-step relative pl-12 text-slate-400">
+                        <span class="absolute left-0 top-0 w-10 h-10 bg-slate-300 text-white rounded-full flex items-center justify-center font-bold z-10">02</span>
+                        <p class="text-sm font-medium">13:30</p>
+                        <h4 class="text-lg font-bold">飛機起飛</h4>
+                        <p>結束 9 天完美旅程。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工具欄 -->
+        <section class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl shadow-sm p-6 border border-slate-100">
+                <h2 class="text-lg font-bold mb-4 flex items-center text-emerald-600">
+                    <i class="fas fa-check-square mr-2"></i> 快速核對清單
+                </h2>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center space-x-2" onclick="toggleCheck(this)">
+                        <input type="checkbox" class="w-4 h-4 rounded border-slate-300">
+                        <span>護照、機票、VJW QR Code</span>
+                    </li>
+                    <li class="flex items-center space-x-2" onclick="toggleCheck(this)">
+                        <input type="checkbox" class="w-4 h-4 rounded border-slate-300">
+                        <span>日圓現鈔、悠遊卡/ICOCA</span>
+                    </li>
+                    <li class="flex items-center space-x-2" onclick="toggleCheck(this)">
+                        <input type="checkbox" class="w-4 h-4 rounded border-slate-300">
+                        <span>Google Map 我的地圖收藏</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-amber-50 rounded-2xl p-6 border border-amber-100">
+                <h2 class="text-lg font-bold mb-2 flex items-center text-amber-700">
+                    <i class="fas fa-info-circle mr-2"></i> 小提醒
+                </h2>
+                <p class="text-xs text-amber-800 leading-relaxed">
+                    點擊各天行程最下方的住宿區塊，可以快速確認當晚休息的地點與導航資訊。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-8 py-8 bg-slate-800 text-center text-slate-400 text-xs">
+        <p>祝旅途平安順心！ ❤️</p>
+    </footer>
+
+    <script>
+        function showTab(day) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            document.getElementById(`tab-${day}`).classList.add('active');
+            document.getElementById(`btn-${day}`).classList.add('active');
+            const btn = document.getElementById(`btn-${day}`);
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+        function toggleCheck(el) {
+            const span = el.querySelector('span');
+            span.classList.toggle('checked-item');
+        }
+    </script>
+</body>
+</html>
