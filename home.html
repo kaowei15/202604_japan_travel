@@ -42,11 +42,23 @@
             display: block;
             animation: fadeIn 0.3s ease-in-out;
         }
+        .main-tab-content {
+            display: none;
+        }
+        .main-tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .tab-btn.active {
+            background-color: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+        .day-tab-btn.active {
             background-color: #4f46e5;
             color: white;
             border-color: #4f46e5;
@@ -95,12 +107,21 @@
             </div>
         </section>
 
-        <!-- 日期分頁標籤 -->
+        <!-- 主分頁標籤 -->
         <section class="sticky top-2 z-30">
+            <div class="flex py-2 gap-2 bg-slate-50/80 backdrop-blur-md rounded-xl p-1 shadow-sm">
+                <button onclick="showMainTab('itinerary')" id="btn-main-itinerary" class="tab-btn active flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-calendar-alt mr-1"></i> 行程</button>
+                <button onclick="showMainTab('flight')" id="btn-main-flight" class="tab-btn flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-plane mr-1"></i> 飛機資訊</button>
+                <button onclick="showMainTab('vjw')" id="btn-main-vjw" class="tab-btn flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-qrcode mr-1"></i> VJW 資料</button>
+            </div>
+        </section>
+
+        <!-- 行程子分頁標籤 -->
+        <section id="day-tabs-section" class="sticky top-16 z-20 mt-2">
             <div class="flex overflow-x-auto no-scrollbar py-2 gap-2 bg-slate-50/80 backdrop-blur-md rounded-xl p-1 shadow-sm">
                 <script>
                     for (let i = 1; i <= 9; i++) {
-                        document.write(`<button onclick="showTab(${i})" id="btn-${i}" class="tab-btn ${i === 1 ? 'active' : ''} shrink-0 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm">Day ${i}</button>`);
+                        document.write(`<button onclick="showDayTab(${i})" id="btn-day-${i}" class="day-tab-btn ${i === 1 ? 'active' : ''} shrink-0 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm">Day ${i}</button>`);
                     }
                 </script>
             </div>
@@ -109,10 +130,12 @@
         <!-- 行程詳細內容 -->
         <section id="itinerary-container" class="bg-white rounded-2xl shadow-sm p-6 border border-slate-100 min-h-[400px]">
             
-            <!-- Day 1 -->
+            <!-- 行程主分頁 -->
+            <div id="main-tab-itinerary" class="main-tab-content active">
+                <!-- Day 1 -->
             <div id="tab-1" class="tab-content active">
                 <h3 class="text-xl font-bold text-blue-600 mb-6 flex items-center">
-                    <i class="fas fa-ship mr-2"></i> Day 1 | 跨海抵達神戶
+                    <i class="fas fa-ship mr-2"></i> Day 1 | 4/25(六) 跨海抵達神戶
                 </h3>
                 <div class="relative ml-2 mb-8">
                     <div class="itinerary-step relative pl-12 pb-8">
@@ -157,7 +180,7 @@
             <!-- Day 2 -->
             <div id="tab-2" class="tab-content">
                 <h3 class="text-xl font-bold text-blue-600 mb-6 flex items-center">
-                    <i class="fas fa-castle mr-2"></i> Day 2 | 姬路國寶文化之旅
+                    <i class="fas fa-castle mr-2"></i> Day 2 | 4/26(日) 姬路國寶文化之旅
                 </h3>
                 <div class="relative ml-2 mb-8">
                     <div class="itinerary-step relative pl-12 pb-8">
@@ -182,7 +205,7 @@
             <!-- Day 3 -->
             <div id="tab-3" class="tab-content">
                 <h3 class="text-xl font-bold text-blue-600 mb-6 flex items-center">
-                    <i class="fas fa-camera-retro mr-2"></i> Day 3 | 神戶優雅氛圍
+                    <i class="fas fa-camera-retro mr-2"></i> Day 3 | 4/27(一) 神戶優雅氛圍
                 </h3>
                 <div class="relative ml-2 mb-8">
                     <div class="itinerary-step relative pl-12 pb-8">
@@ -211,7 +234,7 @@
             <!-- Day 4 -->
             <div id="tab-4" class="tab-content">
                 <h3 class="text-xl font-bold text-red-600 mb-6 flex items-center">
-                    <i class="fas fa-exchange-alt mr-2"></i> Day 4 | 前往大阪
+                    <i class="fas fa-exchange-alt mr-2"></i> Day 4 | 4/28(二) 前往大阪
                 </h3>
                 <div class="relative ml-2 mb-8 border-l-2 border-dashed border-red-200">
                     <div class="itinerary-step relative pl-12 pb-8">
@@ -240,7 +263,7 @@
             <!-- Day 5 -->
             <div id="tab-5" class="tab-content">
                 <h3 class="text-xl font-bold text-red-600 mb-6 flex items-center">
-                    <i class="fas fa-gamepad mr-2"></i> Day 5 | 下町與動漫天堂
+                    <i class="fas fa-gamepad mr-2"></i> Day 5 | 4/29(三) 下町與動漫天堂
                 </h3>
                 <div class="relative ml-2 mb-8 border-l-2 border-dashed border-red-200">
                     <div class="itinerary-step relative pl-12 pb-8">
@@ -269,7 +292,7 @@
             <!-- Day 6 -->
             <div id="tab-6" class="tab-content">
                 <h3 class="text-xl font-bold text-red-600 mb-6 flex items-center">
-                    <i class="fas fa-landmark mr-2"></i> Day 6 | 大阪地標之旅
+                    <i class="fas fa-landmark mr-2"></i> Day 6 | 4/30(四) 大阪地標之旅
                 </h3>
                 <div class="relative ml-2 mb-8">
                     <div class="itinerary-step relative pl-12 pb-8">
@@ -297,7 +320,7 @@
             <!-- Day 7 -->
             <div id="tab-7" class="tab-content">
                 <h3 class="text-xl font-bold text-emerald-600 mb-6 flex items-center">
-                    <i class="fas fa-train mr-2"></i> Day 7 | 前進和歌山
+                    <i class="fas fa-train mr-2"></i> Day 7 | 5/1(五) 前進和歌山
                 </h3>
                 <div class="relative ml-2 mb-8 border-l-2 border-dashed border-emerald-200">
                     <div class="itinerary-step relative pl-12 pb-8">
@@ -322,7 +345,7 @@
             <!-- Day 8 -->
             <div id="tab-8" class="tab-content">
                 <h3 class="text-xl font-bold text-emerald-600 mb-6 flex items-center">
-                    <i class="fas fa-fish mr-2"></i> Day 8 | 和歌山深度遊
+                    <i class="fas fa-fish mr-2"></i> Day 8 | 5/2(六) 和歌山深度遊
                 </h3>
                 <div class="relative ml-2 mb-8">
                     <div class="itinerary-step relative pl-12 pb-8">
@@ -354,7 +377,7 @@
             <!-- Day 9 -->
             <div id="tab-9" class="tab-content">
                 <h3 class="text-xl font-bold text-slate-700 mb-6 flex items-center">
-                    <i class="fas fa-plane-departure mr-2"></i> Day 9 | 平安返家
+                    <i class="fas fa-plane-departure mr-2"></i> Day 9 | 5/3(日) 平安返家
                 </h3>
                 <div class="relative ml-2">
                     <div class="itinerary-step relative pl-12 pb-8 text-slate-400">
@@ -368,6 +391,154 @@
                         <p class="text-sm font-medium">13:30</p>
                         <h4 class="text-lg font-bold">飛機起飛</h4>
                         <p>結束 9 天完美旅程。</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- 飛機資訊主分頁 -->
+            <div id="main-tab-flight" class="main-tab-content">
+                <h3 class="text-xl font-bold text-indigo-600 mb-6 flex items-center">
+                    <i class="fas fa-plane mr-2"></i> 飛機資訊
+                </h3>
+                <div class="space-y-6">
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                        <h4 class="font-bold text-blue-800 mb-3 flex items-center">
+                            <i class="fas fa-plane-departure mr-2"></i> 去程航班
+                        </h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">航空公司：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">航班號碼：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">出發時間：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">抵達時間：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">出發機場：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">抵達機場：</span>
+                                <span class="text-slate-600 flex-1">KIX 關西國際機場</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-100">
+                        <h4 class="font-bold text-amber-800 mb-3 flex items-center">
+                            <i class="fas fa-plane-arrival mr-2"></i> 回程航班
+                        </h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">航空公司：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">航班號碼：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">出發時間：</span>
+                                <span class="text-slate-600 flex-1">13:30</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">抵達時間：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">出發機場：</span>
+                                <span class="text-slate-600 flex-1">KIX 關西國際機場</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">抵達機場：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VJW 資料主分頁 -->
+            <div id="main-tab-vjw" class="main-tab-content">
+                <h3 class="text-xl font-bold text-emerald-600 mb-6 flex items-center">
+                    <i class="fas fa-qrcode mr-2"></i> VJW 資料
+                </h3>
+                <div class="space-y-6">
+                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                        <h4 class="font-bold text-emerald-800 mb-3 flex items-center">
+                            <i class="fas fa-user mr-2"></i> 個人資料
+                        </h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">姓名：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">護照號碼：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">出生日期：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-slate-700 w-24">國籍：</span>
+                                <span class="text-slate-600 flex-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                        <h4 class="font-bold text-blue-800 mb-3 flex items-center">
+                            <i class="fas fa-qrcode mr-2"></i> QR Code 資訊
+                        </h4>
+                        <div class="space-y-3 text-sm">
+                            <div>
+                                <p class="font-medium text-slate-700 mb-2">入境審查 QR Code：</p>
+                                <p class="text-slate-500 text-xs mb-2">請在 Visit Japan Web 完成入境審查手續後，截圖保存 QR Code</p>
+                                <div class="bg-white p-4 rounded-lg border border-slate-200 min-h-[100px] flex items-center justify-center text-slate-400">
+                                    <i class="fas fa-image text-3xl"></i>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="font-medium text-slate-700 mb-2">海關申報 QR Code：</p>
+                                <p class="text-slate-500 text-xs mb-2">請在 Visit Japan Web 完成海關申報手續後，截圖保存 QR Code</p>
+                                <div class="bg-white p-4 rounded-lg border border-slate-200 min-h-[100px] flex items-center justify-center text-slate-400">
+                                    <i class="fas fa-image text-3xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-100">
+                        <h4 class="font-bold text-amber-800 mb-3 flex items-center">
+                            <i class="fas fa-info-circle mr-2"></i> 重要提醒
+                        </h4>
+                        <ul class="space-y-2 text-sm text-amber-800">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-2 mt-0.5 text-amber-600"></i>
+                                <span>請在出發前完成 Visit Japan Web 的註冊與登錄</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-2 mt-0.5 text-amber-600"></i>
+                                <span>建議將 QR Code 截圖保存至手機相簿，方便快速出示</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-2 mt-0.5 text-amber-600"></i>
+                                <span>入境審查與海關申報的 QR Code 需分別準備</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mr-2 mt-0.5 text-amber-600"></i>
+                                <span>Visit Japan Web 網址：<a href="https://www.vjw.digital.go.jp" target="_blank" class="text-blue-600 underline">www.vjw.digital.go.jp</a></span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -410,20 +581,60 @@
     </footer>
 
     <script>
-        function showTab(day) {
+        function showMainTab(tab) {
+            // 隱藏所有主分頁內容
+            const mainContents = document.querySelectorAll('.main-tab-content');
+            mainContents.forEach(c => c.classList.remove('active'));
+            
+            // 移除所有主分頁按鈕的 active 狀態
+            const mainBtns = document.querySelectorAll('.tab-btn');
+            mainBtns.forEach(b => b.classList.remove('active'));
+            
+            // 顯示選中的主分頁
+            document.getElementById(`main-tab-${tab}`).classList.add('active');
+            document.getElementById(`btn-main-${tab}`).classList.add('active');
+            
+            // 如果是行程分頁，顯示日期子分頁；否則隱藏
+            const dayTabsSection = document.getElementById('day-tabs-section');
+            if (tab === 'itinerary') {
+                dayTabsSection.style.display = 'block';
+                // 確保顯示第一個日期
+                if (!document.querySelector('.day-tab-btn.active')) {
+                    showDayTab(1);
+                }
+            } else {
+                dayTabsSection.style.display = 'none';
+            }
+        }
+        
+        function showDayTab(day) {
+            // 只在行程主分頁顯示時才切換日期
+            if (!document.getElementById('main-tab-itinerary').classList.contains('active')) {
+                return;
+            }
+            
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(c => c.classList.remove('active'));
-            const btns = document.querySelectorAll('.tab-btn');
-            btns.forEach(b => b.classList.remove('active'));
+            const dayBtns = document.querySelectorAll('.day-tab-btn');
+            dayBtns.forEach(b => b.classList.remove('active'));
             document.getElementById(`tab-${day}`).classList.add('active');
-            document.getElementById(`btn-${day}`).classList.add('active');
-            const btn = document.getElementById(`btn-${day}`);
-            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            document.getElementById(`btn-day-${day}`).classList.add('active');
+            const btn = document.getElementById(`btn-day-${day}`);
+            if (btn) {
+                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
         }
+        
         function toggleCheck(el) {
             const span = el.querySelector('span');
             span.classList.toggle('checked-item');
         }
+        
+        // 初始化：顯示行程分頁和第一天
+        window.addEventListener('DOMContentLoaded', function() {
+            showMainTab('itinerary');
+            showDayTab(1);
+        });
     </script>
 </body>
 </html>
