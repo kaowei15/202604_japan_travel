@@ -109,11 +109,11 @@
 
         <!-- 主分頁標籤 -->
         <section class="sticky top-2 z-30">
-            <div class="flex py-2 gap-2 bg-slate-50/80 backdrop-blur-md rounded-xl p-1 shadow-sm">
-                <button onclick="showMainTab('itinerary')" id="btn-main-itinerary" class="tab-btn active flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-calendar-alt mr-1"></i> 行程</button>
-                <button onclick="showMainTab('flight')" id="btn-main-flight" class="tab-btn flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-plane mr-1"></i> 飛機資訊</button>
-                <button onclick="showMainTab('cards')" id="btn-main-cards" class="tab-btn flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-credit-card mr-1"></i> 刷卡攻略</button>
-                <button onclick="showMainTab('vjw')" id="btn-main-vjw" class="tab-btn flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-qrcode mr-1"></i> VJW 資料</button>
+            <div class="flex overflow-x-auto no-scrollbar py-2 gap-2 bg-slate-50/80 backdrop-blur-md rounded-xl p-1 shadow-sm">
+                <button onclick="showMainTab('itinerary')" id="btn-main-itinerary" class="tab-btn active shrink-0 flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-calendar-alt mr-1"></i> 行程</button>
+                <button onclick="showMainTab('flight')" id="btn-main-flight" class="tab-btn shrink-0 flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-plane mr-1"></i> 飛機資訊</button>
+                <button onclick="showMainTab('cards')" id="btn-main-cards" class="tab-btn shrink-0 flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-credit-card mr-1"></i> 刷卡攻略</button>
+                <button onclick="showMainTab('vjw')" id="btn-main-vjw" class="tab-btn shrink-0 flex-1 px-5 py-2 rounded-lg border border-slate-200 bg-white font-bold transition-all text-sm"><i class="fas fa-qrcode mr-1"></i> VJW 資料</button>
             </div>
         </section>
 
@@ -629,7 +629,7 @@
                         <div class="mb-4">
                             <label class="flex flex-col gap-1 text-sm">
                                 <span class="font-medium text-slate-700">PayPay 消費金額 (JPY)</span>
-                                <input type="number" id="pp-jpy" min="0" step="1" value="100" class="w-44 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcPayPayCompare()">
+                                <input type="number" id="pp-jpy" min="0" step="1" value="100" class="w-full sm:w-44 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcPayPayCompare()">
                             </label>
                         </div>
 
@@ -657,9 +657,9 @@
                             </div>
                         </div>
 
-                        <div class="bg-white rounded-xl p-4 border border-sky-100 text-sm space-y-3">
+                        <div class="bg-white rounded-xl p-4 border border-sky-100 text-sm space-y-3 max-w-full overflow-hidden">
                             <div class="overflow-x-auto">
-                                <table class="w-full border-collapse min-w-[520px]">
+                                <table class="w-full border-collapse table-fixed">
                                     <thead>
                                         <tr class="bg-sky-100 text-sky-900">
                                             <th class="border border-sky-200 px-3 py-2 text-left">項目</th>
@@ -686,8 +686,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <p class="text-sm font-bold text-emerald-700" id="pp-recommend">—</p>
-                            <p class="text-xs text-slate-500" id="pp-note">—</p>
+                            <p class="text-sm font-bold text-emerald-700 break-words" id="pp-recommend">—</p>
+                            <p class="text-xs text-slate-500 break-words" id="pp-note">—</p>
                         </div>
                     </div>
 
