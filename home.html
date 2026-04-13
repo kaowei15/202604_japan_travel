@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2024 京阪神和歌山 9天8夜探險之旅</title>
+    <title>2024 京阪神和歌山 9天8夜探險之旅2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -591,11 +591,11 @@
                         <div class="flex flex-wrap gap-4 mb-4 text-sm">
                             <label class="flex flex-col gap-1">
                                 <span class="font-medium text-slate-700">消費日圓 (JPY)</span>
-                                <input type="number" id="kumamon-jpy" min="0" step="1" value="10000" class="w-40 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcKumamonCashback()">
+                                <input type="number" id="kumamon-jpy" min="0" step="1" inputmode="numeric" value="10000" class="w-40 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcKumamonCashback()">
                             </label>
                             <label class="flex flex-col gap-1">
                                 <span class="font-medium text-slate-700">匯率：1 日圓 = 幾元台幣</span>
-                                <input type="number" id="kumamon-rate" min="0" step="0.0001" value="0.201" class="w-40 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcKumamonCashback()" title="例：0.21 表示 1 日圓兌 0.21 新台幣">
+                                <input type="number" id="kumamon-rate" min="0" step="0.0001" inputmode="decimal" value="0.201" class="w-40 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcKumamonCashback()" title="例：0.21 表示 1 日圓兌 0.21 新台幣">
                             </label>
                         </div>
                         <fieldset class="mb-4 text-sm">
@@ -629,7 +629,7 @@
                         <div class="mb-4">
                             <label class="flex flex-col gap-1 text-sm">
                                 <span class="font-medium text-slate-700">PayPay 消費金額 (JPY)</span>
-                                <input type="number" id="pp-jpy" min="0" step="1" value="100" class="w-full sm:w-44 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcPayPayCompare()">
+                                <input type="number" id="pp-jpy" min="0" step="1" inputmode="numeric" value="100" class="w-full sm:w-44 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcPayPayCompare()">
                             </label>
                         </div>
 
@@ -638,7 +638,7 @@
                                 <p class="font-semibold text-sky-800">玉山</p>
                                 <label class="flex flex-col gap-1 text-sm">
                                     <span class="text-slate-600">匯率 (1 日圓 = 幾元台幣)</span>
-                                    <input type="number" id="pp-a-rate" min="0" step="0.0001" value="0.2017" class="px-3 py-2 rounded-lg border border-slate-300" oninput="calcPayPayCompare()">
+                                    <input type="number" id="pp-a-rate" min="0" step="0.0001" inputmode="decimal" value="0.2017" class="px-3 py-2 rounded-lg border border-slate-300" oninput="calcPayPayCompare()">
                                 </label>
                                 <p class="text-sm text-slate-700"><span class="font-medium">回饋：</span>3.5%</p>
                                 <p class="text-sm text-slate-700"><span class="font-medium">回饋上限：</span>NT$ 100</p>
@@ -649,7 +649,7 @@
                                 <p class="font-semibold text-cyan-800">台新</p>
                                 <label class="flex flex-col gap-1 text-sm">
                                     <span class="text-slate-600">匯率 (1 日圓 = 幾元台幣)</span>
-                                    <input type="number" id="pp-b-rate" min="0" step="0.0001" value="0.2010" class="px-3 py-2 rounded-lg border border-slate-300" oninput="calcPayPayCompare()">
+                                    <input type="number" id="pp-b-rate" min="0" step="0.0001" inputmode="decimal" value="0.2010" class="px-3 py-2 rounded-lg border border-slate-300" oninput="calcPayPayCompare()">
                                 </label>
                                 <p class="text-sm text-slate-700"><span class="font-medium">回饋：</span>3.8%</p>
                                 <p class="text-sm text-slate-700"><span class="font-medium">回饋上限：</span>無上限</p>
