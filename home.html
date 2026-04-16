@@ -628,7 +628,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <label class="flex flex-col gap-1 text-sm">
                                     <span class="font-medium text-slate-700">刷卡消費金額 (JPY)</span>
-                                    <input type="number" id="bank-jpy" min="0" step="1" inputmode="numeric" value="100" class="w-full sm:w-44 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcBankCompare()">
+                                    <input type="number" id="bank-jpy" min="0" step="1" inputmode="numeric" value="100" class="w-full sm:w-44 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="syncSharedJpy('bank-jpy')">
                                 </label>
                                 <label class="flex flex-col gap-1 text-sm min-w-0">
                                     <span class="font-medium text-slate-700">日幣現鈔匯率 (1 日圓 = 幾元台幣)</span>
@@ -717,7 +717,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <label class="flex flex-col gap-1 text-sm">
                                     <span class="font-medium text-slate-700">PayPay 消費金額 (JPY)</span>
-                                    <input type="number" id="pp-jpy" min="0" step="1" inputmode="numeric" value="100" class="w-full sm:w-44 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="calcPayPayCompare()">
+                                    <input type="number" id="pp-jpy" min="0" step="1" inputmode="numeric" value="100" class="w-full sm:w-44 px-3 py-2 rounded-lg border border-slate-300 bg-white" oninput="syncSharedJpy('pp-jpy')">
                                 </label>
                                 <label class="flex flex-col gap-1 text-sm min-w-0">
                                     <span class="font-medium text-slate-700">日幣現鈔匯率 (1 日圓 = 幾元台幣)</span>
@@ -1032,6 +1032,18 @@
             } else {
                 capNote.textContent = '「僅日本一般」不含指定店加碼 6%。';
             }
+        }
+
+        function syncSharedJpy(sourceId) {
+            const bankEl = document.getElementById('bank-jpy');
+            const ppEl = document.getElementById('pp-jpy');
+            if (!bankEl || !ppEl) return;
+            const sourceEl = sourceId === 'pp-jpy' ? ppEl : bankEl;
+            const value = sourceEl.value;
+            if (bankEl.value !== value) bankEl.value = value;
+            if (ppEl.value !== value) ppEl.value = value;
+            calcBankCompare();
+            calcPayPayCompare();
         }
 
         function calcBankCompare() {
